@@ -7,7 +7,7 @@
     $files = Get-ChildItem "$PSScriptRoot\*" | Where-Object {$_.Name -ne "($MyInvocation.MyCommand).Name"}
     foreach ($file in $files){
         $Exclude = "Import.ps1"
-        Copy-Item -Path $file -Destination "C:\Users\jrenzdelara\Documents\PowerShell\Modules\" -Exclude $Exclude -Force -Recurse -Confirm:$false
+        Copy-Item -Path $file -Destination "C:\Users\$env:USERNAME\Documents\PowerShell\Modules\" -Exclude $Exclude -Force -Recurse -Confirm:$false
     }
     Start-Sleep -Milliseconds 750
     $Modules = (Get-Item -Path "C:\Users\$env:USERNAME\Documents\PowerShell\Modules\*" | Where-Object {$_.Attributes -eq "Directory"}).FullName
@@ -25,7 +25,7 @@ Function Import-PS6Lower {
     $files = Get-ChildItem "$PSScriptRoot\*" | Where-Object {$_.Name -ne "($MyInvocation.MyCommand).Name"}
     foreach ($file in $files){
         $Exclude = "Import.ps1"
-        Copy-Item -Path $file -Destination "C:\Users\jrenzdelara\Documents\WindowsPowerShell\Modules\" -Exclude $Exclude -Force -Recurse -Confirm:$false
+        Copy-Item -Path $file -Destination "C:\Users\$env:USERNAME\Documents\WindowsPowerShell\Modules\" -Exclude $Exclude -Force -Recurse -Confirm:$false
     }
     Start-Sleep -Milliseconds 750
     $Modules = (Get-Item -Path "C:\Users\$env:USERNAME\Documents\WindowsPowerShell\Modules\*" | Where-Object {$_.Attributes -eq "Directory"}).FullName

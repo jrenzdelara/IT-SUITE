@@ -2,7 +2,7 @@ param (
 [Parameter(Mandatory = $false)]
 [string]$ComputerName
 )
-Function Clear-Profle ($ComputerName) {
+Function Clear-Profile ($ComputerName) {
     New-Item -Path "\\$ComputerName\c$\" -Name TEMP -ItemType Directory -Force -Confirm:$false | Out-Null
     Copy-Item -Path "$PSScriptRoot\files\DelProf2.exe" -Destination "\\$ComputerName\c$\TEMP\" -Force -Recurse -Confirm:$false
     $list = (Get-Item \\$ComputerName\c$\Users\*).Name
