@@ -16,7 +16,7 @@ Function Clear-MSTeamsCache ($ComputerName) {
         Remove-Item -Path C:\Users\$using:NT\AppData\Roaming\Microsoft\Teams -Force -Recurse
         $TeamsFin = (Get-ChildItem -Path C:\Users\$using:NT\AppData\Roaming\Microsoft\Teams -Force).Name 
         $TeamsIni | ForEach-Object {
-            If ($_ -in $AvayaFin){
+            If ($_ -in $TeamsFin){
                 $Status = 'Ignored'
             }
             Else {
